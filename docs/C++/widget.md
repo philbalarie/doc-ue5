@@ -28,6 +28,9 @@ protected:
 	TSubclassOf<UObjectiveWidget> ObjectiveWidgetClass;
 ```    
 
+Widget need include to work, not just forward declaration
+TODO: Add include in Actor.cpp
+
 ```cpp title="Actor.cpp"
 if (ObjectiveWidgetClass)
 	{
