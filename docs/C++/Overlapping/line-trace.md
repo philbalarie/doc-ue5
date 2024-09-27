@@ -9,8 +9,9 @@ public:
 ```cpp title="Actor.cpp"
 void AHorrorBitsCharacter::Interact()
 {
-	const FVector TraceStart = FirstPersonCameraComponent->GetComponentLocation();
-	const FVector TraceEnd = TraceStart + FirstPersonCameraComponent->GetForwardVector() * LineTraceLength;
+	// Center of the screen
+	const FVector TraceStart = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0)->K2_GetActorLocation();
+	const FVector TraceEnd = TraceStart + UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0)->GetActorForwardVector() * 50.f;
 
     // Debug line
 	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, FColor(255, 0, 0), true, 3, 0);
