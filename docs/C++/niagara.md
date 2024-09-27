@@ -1,41 +1,43 @@
 # Niagara
 
+Add Niagara dependency
+
+```cs title="File.Build.cs"
+PrivateDependencyModuleNames.AddRange(new string[] { "Niagara" });
+```
+
 ## Spawn with onComponentHit
 
 ```cpp title="Actor.h"
-
-virtual void BeginPlay() override;
-
-UFUNCTION()
-virtual void HandleOnBlasterBeamHit(UPrimitiveComponent* PrimitiveComponent, AActor* OtherActor,
-	                                    UPrimitiveComponent* PrimitiveComponent1, FVector NormalImpulse,
-	                                    const FHitResult& HitResult);
+class UNiagaraSystem;                              
 
 UPROPERTY(EditAnywhere)
-UStaticMeshComponent* BeamMesh;                                        
+TObjectPtr<UNiagaraSystem> BlasterBeamEffect;
 
 UPROPERTY(EditAnywhere)
-UNiagaraSystem* BlasterBeamEffect;
+TObjectPtr<USceneComponent> BlasterBeamPoint;
 ```
 
 ```cpp title="Actor.cpp"
 
-void ABlasterBeam::BeginPlay()
-{
-	Super::BeginPlay();
-
-	BeamMesh->OnComponentHit.AddDynamic(this, &ABlasterBeam::HandleOnBlasterBeamHit);
-}
+#include "NiagaraFunctionLibrary.h"
 
 void ABlasterBeam::HandleOnBlasterBeamHit(UPrimitiveComponent* PrimitiveComponent, AActor* OtherActor,
                                           UPrimitiveComponent* PrimitiveComponent1, FVector NormalImpulse,
                                           const FHitResult& HitResult)
 {
 	// Spawn VFX effect
-	UNiagaraFunctionLibrary::SpawnSystemAttached(BlasterBeamEffect, HitResult.GetComponent(), FName(),
+	UNiagaraFunctionLibrary::SpawnSystemAttached(BlasterBeamEffect, HitResult.GetComponent(), FName("SocketName"),
 	                                             HitResult.ImpactPoint,
 	                                             HitResult.Normal.Rotation(),
 	                                             EAttachLocation::Type::KeepWorldPosition, true);
 	
 }
+```
+
+## Spawn at location
+
+```cpp title="Actor.cpp"
+
+UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), BlasterBeamEffect, BlasterBeamPoint->GetRelativeLocation(), BlasterBeamPoint->GetRelativeRotation());
 ```
