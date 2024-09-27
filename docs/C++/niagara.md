@@ -19,7 +19,6 @@ TObjectPtr<USceneComponent> BlasterBeamPoint;
 ```
 
 ```cpp title="Actor.cpp"
-
 #include "NiagaraFunctionLibrary.h"
 
 void ABlasterBeam::HandleOnBlasterBeamHit(UPrimitiveComponent* PrimitiveComponent, AActor* OtherActor,
@@ -38,6 +37,5 @@ void ABlasterBeam::HandleOnBlasterBeamHit(UPrimitiveComponent* PrimitiveComponen
 ## Spawn at location
 
 ```cpp title="Actor.cpp"
-
 UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), BlasterBeamEffect, BlasterBeamPoint->GetRelativeLocation(), BlasterBeamPoint->GetRelativeRotation());
 ```

@@ -5,7 +5,6 @@ Doc for sweep: https://unrealcpp.com/sweep-multi-line-trace/
 ## Single
 
 ```cpp title="Actor.cpp"
-
 const ACharacter* PlayerCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 const FVector ActorLocation = PlayerCharacter->GetActorLocation();
 const FVector SweepStart = ActorLocation - FVector(0.f, 0.f, 30.f);
@@ -35,8 +34,6 @@ if (AActor* OtherActor = TraceResult.GetActor())
 ## multi
 
 ```cpp title="Actor.cpp"
-
-
 const FVector ActorLocation = this->GetActorLocation();
 const FVector SweepStart = ActorLocation - FVector(0.f, 0.f, 30.f);
 // End location need to be slightly different to work https://forums.unrealengine.com/t/why-does-sweepsinglebychannel-not-work-with-a-box/393240/3

@@ -14,8 +14,6 @@ AFPSCharacter::AFPSCharacter()
 ```
 
 ```cpp title="Character.h"
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #pragma once
 
 #include "CoreMinimal.h"

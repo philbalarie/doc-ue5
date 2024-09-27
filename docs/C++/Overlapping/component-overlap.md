@@ -19,7 +19,6 @@ protected:
 ```
 
 ```cpp title="Actor.cpp"
-
 AItem::AItem()
 {
 	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
