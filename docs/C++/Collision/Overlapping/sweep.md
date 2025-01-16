@@ -2,6 +2,10 @@
 
 Doc for sweep: https://unrealcpp.com/sweep-multi-line-trace/
 
+## Blueprint function
+
+SphereTraceByChannel()
+
 ## Single
 
 ```cpp title="Actor.cpp"

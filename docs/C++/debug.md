@@ -13,3 +13,11 @@ GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT
 ```cpp title="Actor.cpp"
 GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Test"));
 ```    
+
+# Log message
+
+```cpp title="Actor.cpp"
+UE_LOG(LogTemp, Warning, TEXT("%s"), *AddResult.ResultMessage.ToString());
+```    
+
+
