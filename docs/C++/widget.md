@@ -46,3 +46,22 @@ if (ObjectiveWidgetClass)
 		UE_LOG(LogTemp, Error, TEXT("'%s' Miss Objective Widget Class"), *GetNameSafe(this));
 	}
 ```    
+
+## Bind C++ functions to Text Block
+
+```cpp title="CustomUserWidget.h"
+public:
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> DisplayText;
+	
+	// Be sure to have the right return type
+	UFUNCTION(BlueprintGetter)
+	FText GetDisplayText();
+```    
+
+```cpp title="CustomUserWidget.cpp"
+FText CustomUserWidget::GetDisplayText()
+{
+	return DisplayText->GetText();
+}
+```    
