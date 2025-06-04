@@ -17,7 +17,13 @@ class SANDBOX_API UFrontendSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-	UFUNCTION()
+	/**
+	 * Nice util to get directly subsystem
+	 * @param WorldContextObject 
+	 * @return 
+	 */
+	static UFrontendSubsystem* Get(const UObject* WorldContextObject);
+
 	void SetDemoText(FText InDemoText);
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
@@ -28,8 +34,30 @@ protected:
 
 	virtual void Deinitialize() override;
 };
-
 ```
+
+```cpp title="FrontendSubsystem.cpp"
+#include "Subsystems/FrontendSubsystem.h"
+
+UFrontendSubsystem* UFrontendSubsystem::Get(const UObject* WorldContextObject)
+{
+	if (GEngine)
+	{
+		if (const UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::Assert))
+		{
+			return UGameInstance::GetSubsystem<UFrontendSubsystem>(World->GetGameInstance());
+		}
+	}
+
+	return nullptr;
+}
+
+void UFrontendSubsystem::SetDemoText(FText InDemoText)
+{
+	DemoText = InDemoText;
+}
+```
+
 ## Access Subsystem
 
 ```cpp title="UDemoWidget.cpp"
