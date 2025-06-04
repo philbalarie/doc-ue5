@@ -2,10 +2,6 @@
 
 Singleton like pattern for unreal
 
-## Dependency
-
-Need to add "DeveloperSettings" in build file.
-
 ## Create Subsystem
 
 ```cpp title="FrontendSubsystem.h"
