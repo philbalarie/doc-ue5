@@ -1,4 +1,6 @@
-# Component overlap
+# Developer Settings
+
+Edit in project settings and accessible anywhere
 
 ## Dependency
 
