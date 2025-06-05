@@ -6,6 +6,10 @@ Edit in project settings and accessible anywhere
 
 Need to add "DeveloperSettings" in build file.
 
+```cs title="File.Build.cs"
+PrivateDependencyModuleNames.AddRange(new string[] { "DeveloperSettings" });
+```
+
 ## Creating developer setting
 
 ```cpp title="DeveloperSettings.h"
