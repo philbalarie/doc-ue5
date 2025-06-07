@@ -40,7 +40,7 @@ void AnyWidget::AddNewButtons()
     InputActionRowHandle = ICommonInputModule::GetSettings().GetDefaultBackAction();
 	UMenuButtonBase* AddedButton = DynamicEntryBoxButtons->CreateEntry<UMenuButtonBase>();
 	AddedButton->SetButtonText(FText::FromString("Anything"));
-	AddedButton->SetTriggeredInputAction(InputActionRowHandle);
+	AddedButton->SetTriggeringInputAction(InputActionRowHandle);
 	AddedButton->OnClicked().AddLambda(
 		[this]()
 		{
