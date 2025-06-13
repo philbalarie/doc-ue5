@@ -1,4 +1,4 @@
-# Class Dependency
+# Compile Default
 
 When you have class dependencies in blueprint, you can use this to validate the presence of the class on compile in the editor
 
